@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script>
+            var v1 = 10;    // type - number
+            //v1 = 'hello';   // type - string
+            //v1 = true;      // type - boolean
+            //v1 = null;      // type - object
+            console.log(typeof v1);
+
+            var v2;
+            v2 = 20;
+            v3 = v1 + v2;
+            console.log(v3);
+
+            function sum() {
+                var n1 = 20;
+                var n2 = 30;
+                n3 = n1 + n2;   // 이렇게 선언하면 전역변수처럼 선언된다.
+                console.log(n3);
+            }
+            sum();
+            console.log(n3);
+            console.log(v3);
+
+            v1 = {
+                name: 'hong',
+                age: 20,
+                phone: '010-2345-1212'
+            }
+
+            console.log('hello');
+            console.log('nice');
+            v1 = [10, 20, 30];
+
+            v1 = "20";
+            v2 = 20;
+
+            console.log(v1===v2);
+            console.log(v1==v2);
+            console.log(v1=v2);
+
+            if(v1===v2) {
+                console.log("값이 같습니다.")
+            } else {
+                console.log("값이 다릅니다.");
+            }
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

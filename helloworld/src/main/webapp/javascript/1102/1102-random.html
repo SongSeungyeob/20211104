@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript.random.html</title>
+        
+        <style>
+            td>input {
+                width : 50px;
+                height : 50px;
+                border : 1px solid black;
+                text-align: center;
+                font-size : 20px;
+                font-weight : bold;
+                color : white;
+            }
+
+            input {
+                margin : 0;
+                padding : 0;
+                width : 50px;
+                height : 50px;
+            }
+            
+            .selected {
+                color : yellow;
+                background-color: blue;
+            }
+
+            .selected:focus {
+                color : yellow;
+                background-color : blue;
+                /* transition : all 2 */
+            }
+
+            .correct {
+                color : black;
+                background-color: red;
+            }
+
+            .not_correct {
+                color : white;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="show"> </div>
+        <script>
+            let forBy;
+            while(true) {
+                forBy = prompt('크기를 입력하세요(크기는 짝수여야 합니다.)');
+                if(forBy % 2 == 1 || forBy == 0) {
+                    alert('짝수값을 입력해 주세요 !')
+                } else {
+                    alert(forBy + 'x' + forBy + ' 맵에서 게임을 진행하겠습니다.');
+                    break;
+                }
+            }
+            let pow = Math.pow(forBy, 2);
+            let valRange = pow / 2;
+
+            let randomAry = [];
+            while(randomAry.length != pow) {
+                let randomVal = Math.floor(Math.random() * pow) + 1;
+                if(randomAry.indexOf(randomVal) == -1) {
+                    randomAry.push(randomVal);
+                }
+            }
+            console.log(randomAry);
+
+            let table, tbody, tr, td;
+            table = document.createElement('table');
+            tbody = document.createElement('tbody');
+            table.appendChild(tbody);
+            document.getElementById("show").appendChild(table);
+
+            let successCnt = 0;
+            let clickCnt = 0;
+            randomAry.forEach(function(val, ind) {
+                if(ind % forBy == 0) {
+                    tr = document.createElement('tr');
+                    tbody.appendChild(tr);
+                }
+                td = document.createElement('td');
+                
+                td.onclick = function() {
+                    this.children[0].className = 'selected';
+                    // 2초 정도 지연시키기.
+                    setTimeout(function() {
+                        let selVal = document.querySelectorAll('.selected');
+                        if(selVal.length != 2) {
+                            selVal.forEach(function(val, ind) {
+                                selVal[ind].className = 'not_correct';
+                            })
+                            return;
+                        }
+                        clickCnt++;
+    
+                        if(selVal[0].value == selVal[1].value) {
+                            selVal[0].className = 'correct';
+                            selVal[1].className = 'correct';
+                            successCnt += 2;
+                        } else {
+                            selVal[0].className = 'not_correct';
+                            selVal[1].className = 'not_correct';
+                        }
+
+                        if(successCnt == pow) {
+                            alert(clickCnt + '번 만에 성공하였습니다 !');
+                            return;
+                        }
+                    }, 2000);   
+                    // setTimeout(cbFnc, time) 
+                    // cbFNC를 실행하는데, time(ms)초 후에 실행하세요.
+                }
+                
+                let inputVal = val > valRange ? (val - valRange) : val;
+                td.innerHTML = `<input type="text" value="${inputVal}">`;
+                tr.appendChild(td);
+            });
+            console.log(table);
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/json.html</title>
+
+        <style>
+            .title {
+                display : inline-block;
+                border-right : 2px dashed black;
+                width:20vw;
+                margin : 2px;
+                /* background-color: rgb(0, 180, 0); */
+                color : black;
+                font-size : 20px;
+                font-weight : bolder;
+            }
+
+            .content {              
+                display : inline-block;
+                width : 75vw;
+                /* background-color: orange; */
+                color : black;
+                font-size : 20px;
+            }
+
+            .both {
+                border : 3px solid black;
+                margin : 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="title"></div>   
+        <div id="content"></div>
+    
+        <script>
+
+           let xhtp = new XMLHttpRequest();
+           let globalData = null;
+           xhtp.onreadystatechange = function() {
+               console.log(xhtp.readyState, xhtp.status);
+               if(xhtp.readyState == 4 && xhtp.status == 200) {
+                    globalData = JSON.parse(xhtp.responseText);
+                    createTitle();
+               }
+           }
+           xhtp.open('get', 'MOCK_DATA (1).json');  
+           xhtp.send();                         // send를 해줘야만 실행이 된다.
+
+           function createTitle() {
+               let ret = document.getElementById('title');
+
+               let select = createCheckSelect();
+               ret.appendChild(select);
+
+               let emailText = createEmailSearch();
+               ret.appendChild(emailText);
+
+               let salary = createSalarySearch();
+               ret.appendChild(salary);
+
+               let button = createSearchButton();
+               ret.appendChild(button);
+               console.log(ret);
+           }
+
+           function createSearchButton() {
+               let button = document.createElement('button');
+               button.innerHTML = '검색';
+               button.setAttribute('style', 'width : 50px; height : 30px;');
+               button.onclick = findData;
+               return button;
+           }
+           
+           function findData() {
+               let gender = document.querySelector('select>option:checked').value;
+               let email = document.getElementById('selectEmail').value;
+               let salary = document.getElementById('selectSalary').value;
+               console.log(gender);
+               console.log(email);
+               console.log(salary);
+
+               let thisData = globalData.filter(function(val, ind) {
+                   return (gender == val.gender && val.email.indexOf(email) != -1 && val.salary >= salary);
+               })
+               console.log(thisData);
+               
+               let contentList = document.getElementById('content');
+               let size = contentList.children.length;
+               for(let i = 0 ; i < size; i++) {
+                   contentList.children[0].remove();
+               }   
+               
+               thisData.forEach(function(val, ind) {
+                   let divTag = document.createElement('div');
+                   divTag.className = 'both';
+                   for(let field in thisData[ind]) {
+                        let titleDiv = document.createElement('div');
+                        titleDiv.className = 'title';
+                        titleDiv.innerHTML = field;
+
+                        let contentDiv = document.createElement('div');
+                        contentDiv.className = `content ${field}`;
+                        contentDiv.innerHTML = thisData[ind][field];
+
+                        divTag.append(titleDiv, contentDiv);
+                   }
+                   contentList.appendChild(divTag);
+               })
+           }
+
+           function createSalarySearch() {
+               let comment = document.createElement('span');
+               comment.innerHTML = '급여 : ';
+               document.getElementById('title').appendChild(comment);
+               
+               let input = document.createElement('input');
+               input.id = 'selectSalary';
+               input.type = 'number';
+               input.setAttribute('style', 'margin : 5px; font-size : 15px; width : 100px; height:25px;');
+               return input;
+           }
+
+           function createEmailSearch() {
+               let comment = document.createElement('span');
+               comment.innerHTML = 'Email 검색 : ';
+               document.getElementById('title').appendChild(comment);
+               
+               let input = document.createElement('input');
+               input.id = 'selectEmail';
+               input.type = 'text';
+               input.setAttribute('style', 'margin : 5px; font-size : 15px; width : 200px; height:25px;');
+               return input;            
+           }
+           function createCheckSelect() {
+               let comment = document.createElement('span');
+               comment.innerHTML = '성별 선택 : ';
+               document.getElementById('title').appendChild(comment);
+
+               let select = document.createElement('select');
+               select.id = 'selectGender';
+               let option = document.createElement('option');
+               option.value = 'Female';
+               option.innerHTML = "여성";
+               select.appendChild(option);
+
+               option = document.createElement('option');
+               option.value = "Male";
+               option.innerHTML = "남성";
+               select.appendChild(option);
+
+               select.setAttribute('style', 'margin : 5px; font-size : 15px; width : 80px; height:30px');
+               return select;
+           }
+
+        </script>
+    </body>
+</html>

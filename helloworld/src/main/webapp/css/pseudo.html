@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css/pseudo.html</title>
+        <style>
+            a:link {
+                color:orange;
+            }
+            a:visited {
+                color:green;
+            }
+            a:hover {
+                font-weight:bold;
+            }
+            a:active {
+                color : blue;
+            }
+            input:focus {
+                background-color: yellow;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <!-- input tag = 사용자가 focus를 두느냐 아니냐 즉, 사용자에 의해서
+             상태가 변할 수 있는 것에 대해서 나타내는 tag.
+             ex) 링크를 클릭하기 전, 링크를 클릭하기 위해 마우스를 올려놓았을 때,
+                 링크를 클릭해서 갔다오면 색이 바뀌는 것. 이런 상태 표현. -->
+        <a href="#" target="_blank">Link</a> <br>
+        <input type="text" name="" id="" value="focus">
+        <input type="password" name="" id="" value="password">
+    </body>
+</html>

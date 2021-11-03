@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            html {
+                font-size : 12px;
+            }
+
+            div#Tool {
+                /* border : 1px solid black; */
+                width:700px;
+                height:300px;
+                /* 1vw : 100px일 때, 1vw = 1px */
+                /* 1vh : 100px일 때, 1vh = 1px */
+            }
+
+            header>div {
+                /* background-color: yellow; */
+                font-size: 1.3rem;
+                font-weight : bold;
+                float : left;              
+                margin-top : 2px;
+                margin-left : 7px;   
+            }
+
+            div#secondleft {
+                /* background-color: yellow; */
+                float : left;
+                margin-left : 5px;
+                font-size : 0.6rem;
+                color:#707070;
+            }
+
+            select {
+                border: 1px solid #909090;
+                font-size:0.8rem;
+                color:#707070;
+                width:70px;
+                height:22px;
+            }
+
+            input {
+                border: 1px solid #909090;
+                font-size:0.8rem;
+                color:#707070;
+                width:100px;
+                height:18px;
+            }
+
+            input[type="button"] {
+                border: 1px solid #909090;
+                font-size:0.8rem;
+                font-weight : bolder;
+                color:#707070;
+                width:43px;
+                height:22px;
+            }
+
+            div#secondright>input {
+                float:right;
+                border : 0px;
+                background-color: white;
+                width: 70px;
+                margin-right : 10px;
+            }
+
+            div#secondright>input:hover {
+                background-color: gray;
+                color:white;
+            }
+
+            div#thirdleft {
+                border-top: 1px solid black;
+                margin-left:5px;
+                background-color: #e0e0e0;
+                width:57rem;
+                height:2.2rem;
+            }
+
+            div#thirdleft>div {
+                margin-left:10px;
+                margin-right:10px;
+                float:left;
+                font-size : 0.8rem;
+                font-weight : bolder;
+                text-align : center;
+                line-height:2rem;
+            }
+
+            div#thirdleft>div>select {
+                border : 0px;
+                background-color: #e0e0e0;
+                font-size : 0.8rem;
+                margin-top:2px;
+                color:black;
+                font-weight : bolder;
+                text-align : center;
+                line-height:2rem;
+                width:5.5rem;
+            }
+
+            div#content {
+                /* border : 2px solid red; */
+                height:20px;
+                margin-left:10px;
+                margin-right:10px;
+                border-bottom:1px solid darkgray;
+            }
+
+            div#content>div {
+                /* background-color: green; */
+                float:left;
+                margin-top:2px;
+                margin-bottom:2px;
+                font-size : 0.9rem;
+                color:#404040;
+                font-weight:bolder;
+                
+            }
+            div#content>div#num {
+                margin-left:10px;
+                margin-right:10px;
+            }
+            div#content>div#kind {
+                margin-left:40px;
+                margin-right:10px;
+            }
+            div#content>div#state {
+                margin-left:35px;
+                margin-right:10px;
+                color :dodgerblue;
+                font-weight: bolder;
+            }
+            div#content>div#title {
+                /* background-color: red; */
+                width:21rem;
+                margin-left:22px;
+                margin-right:15px;
+                color:black;
+                font-weight:bolder;
+            }
+            div#content>div#name {
+                /* background-color: yellow; */
+                width:8rem;
+                margin-right:15px;
+            }
+            div#content>div#date {
+                /* background-color: green; */
+                margin-left:10px;
+                margin-right:15px;
+            }
+
+            div#lastline {
+                float:left;
+                /* background-color: red; */
+                font-size : 1.3rem;
+                margin-left:10px;
+                margin-right:10px;
+                margin-top:10px;
+                height:30px;
+                text-align:center;
+                width:45rem;
+                line-height:30px;
+                color : darkgray;
+            }
+
+            div#lastline>span {
+                color :dodgerblue;
+                font-weight : bolder;
+            }
+
+            div#page {
+                /* background-color: green; */
+                float:right;
+                margin-right:10px;
+                margin-top:10px;
+                width:10rem;
+                height : 30px;
+                line-height:30px;
+            }
+            div#page>select {
+                border : 1px solid darkgray;
+                width:40px;
+                margin-left:30px;
+            }
+
+            div#page>div {
+                float:right;
+                font-style : bolder;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div id="Tool">
+            <header>
+                <div>상품 문의하기</div>
+                <div id="number" style="color:blue;">4</div>
+            </header>
+            <br><br>
+
+            <div id="secondleft">
+                <select>
+                    <option value="">제목</option>
+                    <option value="글번호">글번호</option>
+                    <option value="작성자">작성자</option>
+                </select>
+                <input type="text">
+                <input type="button" value="검색">
+                <span>총 검색 결과</span>
+                <span style="color:black; font-weight:bold;">4건</span>
+            </div>
+            
+            <div id="secondright">
+                <input type="button" value ="전체 문의보기">
+                <input type="button" value = "내 문의보기">
+                <input type="button" value ="문의하기">
+            </div>
+            <br><br>
+
+            <div id="thirdleft">
+                <div>번호 </div>
+                <div style="margin-right : 0.2px; color:#909090;">|</div>
+                <div>
+                    <select>
+                        <option value="">문의종류</option>
+                        <option value="배송">배송</option>
+                        <option value="기타">기타</option>
+                        <option value="상품">상품</option>
+                    </select>
+                    <select>
+                        <option value="">답변상태</option>
+                        <option value="답변완료">답변완료</option>
+                        <option value="답변대기">답변대기</option>
+                        <option value="처리중">처리중</option>
+                    </select>
+                </div>
+                <div style="margin-left:130px; margin-right:130px;">제목</div>
+                <div style="margin-right:50px;">문의자</div>
+                <div style="margin-left:30px;">등록일</div>
+            </div>
+            <div id="content">
+                <div id="num">4</div>
+                <div id="kind">배송</div>
+                <div id="state">답변완료</div>
+                <div id="title">기타 문의입니다.🔒</div>
+                <div id="name">b45******</div>
+                <div id="date">2021.10.15</div>
+            </div>
+            <div id="content">
+                <div id="num">3</div>
+                <div id="kind">배송</div>
+                <div id="state">답변완료</div>
+                <div id="title">배송</div>
+                <div id="name">bul******</div>
+                <div id="date">2021.10.07</div>
+            </div>
+
+            <div id="content">
+                <div id="num">2</div>
+                <div id="kind">배송</div>
+                <div id="state">답변완료</div>
+                <div id="title">상품 문의입니다.🔒</div>
+                <div id="name">ssy********</div>
+                <div id="date">2021.10.01</div>
+            </div>
+
+            <div id="content">
+                <div id="num">1</div>
+                <div id="kind">배송</div>
+                <div id="state">답변완료</div>
+                <div id="title">시스템 문의입니다.🔒</div>
+                <div id="name">fdk******</div>
+                <div id="date">2021.08.31</div>
+            </div>
+
+            <div id="lastline">
+                << < 
+             <span>①</span>
+                > >>
+            </div>
+            <div id="page">
+                <div>1 Page</div>
+                <select>
+                    <option value="">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                
+            </div>
+        </div>
+    </body>
+</html>

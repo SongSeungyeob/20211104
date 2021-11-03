@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="mystyle.css">  
+            이런식으로 외부에서 mystyle.css라는 파일을 만들어서 이를 이용해서 사용할 수도 있다.
+        -->
+        <style>
+            #All {
+                border: 2px solid blue;
+            }
+            #title {
+                background-color : blue;
+                font-size:25px;
+                font : bold;
+                color: white;
+                border: 5px blue;
+                display: inline; 
+
+            }
+
+            #menu {         
+                border: 1px solid  gray;
+                font : bold;
+                display: block;
+                width:100%;
+                height:100%;
+            }
+            
+            #search>input {
+                width:150px;
+                height:40px;
+                margin:5px 40%;
+                background-color: blue;
+                color: white;
+                font-size: 20px;
+            }
+            .menuName {
+                border: 2px solid green;
+                width:20%;
+                font-style :bolder;      
+                display:inline;
+            }
+
+            input[type='text'] {
+                width:100px;
+            }
+
+            tr>td:nth-child(1) {
+                /* table에서 tr밑에 있는 td들 중에서 첫 번째 있는 td들.*/
+                background-color:yellow;
+                text-align:center;
+            }
+
+            tr>td:nth-child(3) {
+                background-color: chartreuse;
+                text-align:right;
+            }
+
+            tr>td>button {
+                background-color: aqua;
+            }
+
+            tr>td>button:nth-of-type(1) {
+                /*tr밑에 td밑에 있는 button들을 찾겠습니다 했는데
+                  button들이 여러개 있으니까 그 중 몇번째 오는지를 적어주는 것.*/
+                background-color: coral;
+            }
+
+            tr>td>button:nth-last-of-type() {
+                /*뒤에서부터 찾아오는 것.*/
+                background-color: blueviolet;
+            }   
+
+            tr:nth-child(2a) {
+                color:red;
+            }
+            tr:nth-child(3) > td:nth-child(4) {
+                background-color: teal;
+            }
+            
+            #attachment {
+                color:blue;
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <div id="All">
+        <div id="title">게시글 검색</div><p></p>
+        <div id="menu"> 
+            <span class="menuName">게시글 등록일</span>
+            <input type='time'>
+            <select name="time">
+               <option value="00시">00시</option>
+               <option value="00시">01시</option>
+               <option value="00시">02시</option>
+               <option value="00시">03시</option>
+               <option value="00시">04시</option>
+               <option value="00시">05시</option>
+            </select>
+            <span>-</span>
+            <input type="text" readonly>
+            <input type='time'>
+            <select name="time">
+                <option value="00시">00시</option>
+                <option value="00시">01시</option>
+                <option value="00시">02시</option>
+                <option value="00시">03시</option>
+                <option value="00시">04시</option>
+                <option value="00시">05시</option>
+             </select>
+             <button type="button" onclick="alert('')">오늘</button>
+             <button type="button" onclick="alert('')">어제</button>
+             <button type="button" onclick="alert('')">3일</button>
+             <button type="button" onclick="alert('')">7일</button>
+             <button type="button" onclick="alert('')">한 달</button>
+             <button type="button" onclick="alert('')">초기화</button> 
+
+        </div>
+        <div id="menu">
+            <span class="menuName">게시글 선택</span>
+            <select name="text" >상품 후기 게시판
+                <option value="text">상품후기 게시판</option>
+            </select>
+            <select name="text" >
+                <option value="text">전체</option>
+            </select>
+            <select name="text" >
+                <option value="text">스팸글 포함(전체)</option>
+            </select>
+            <input type="radio" name="state" value="text" checked> 전체
+            <input type="radio" name="state" value="text"> 진열
+            <input type="radio" name="state" value="text"> 미진열
+        </div>
+        <div id="menu">
+            <span class="menuName">답변/댓글 여부</span>
+            <select name="text" >
+                <option value="text">전체</option>
+            </select>
+            <span id="separate">첨부파일 여부</span>
+            <input type="radio" name="state" value="text" checked> 전체
+            <input type="radio" name="state" value="text"> 있음
+            <input type="radio" name="state" value="text"> 없음        
+        </div>
+        <div id="menu">
+            <span class="menuName">게시글 검색</span>
+            <select name="text" >
+                <option value="text">이름</option>
+            </select>
+            <input type="text" name="name" readonly>
+            <button type="button" onclick="alert('상품검색 사용')">상품 검색</button>
+            <button type="button" onclick="alert('비우기 사용')">비우기</button>
+            <span id="ps">(상품명 게시글 검색은 상품 QnA, 상품리뷰 게시판 선택시 사용 가능)</span>
+
+        </div>
+        <div id="menu">
+            <span class="menuName">별점 조건</span>
+            <input type="radio" name="state" value="text" checked> 전체 리뷰
+            <select name="text" >
+                <option value="text">배송</option>
+            </select>
+            <input type="radio" name="state" value="text" checked> ★★★★★
+            <input type="radio" name="state" value="text"> ★★★★
+            <input type="radio" name="state" value="text"> ★★★
+            <input type="radio" name="state" value="text"> ★★
+            <input type="radio" name="state" value="text"> ★
+            <span id="ps">(리뷰 게시판에서만 검색 가능합니다.)</span>
+        </div>
+        <div id="menu">
+            <span class="menuName">회원 구분</span>
+            <input type="radio" name="state" value="text" checked> 전체
+            <input type="radio" name="state" value="text"> 회원
+            <input type="radio" name="state" value="text"> 비회원
+            <span id="separate">유입 경로</span>
+            <input type="radio" name="state" value="text" checked> 전체
+            <input type="radio" name="state" value="text"> 웹
+            <input type="radio" name="state" value="text"> 모바일
+            <input type="radio" name="state" value="text"> 네이버 페이        
+        </div>
+        <div id="menu">
+            <span class="menuName">목록 추천 조건</span>
+            <input type="radio" name="state" value="text" checked> 선택안함
+            <input type="radio" name="state" value="text"> 추천목록1
+            <input type="radio" name="state" value="text"> 추천목록2
+            <input type="radio" name="state" value="text"> 추천목록3
+            <span id="ps">(리뷰/QnA 게시판에서만 검색 가능합니다.)</span>        
+        </div>
+        <div id="menu">
+            <span class="menuName">게시판 URL</span>
+            <span>/board/board.html?code=psj1201_board2</span>       
+            <button type="button" onclick="alert('주소를 복사')">주소 복사</button>
+            <button type="button" onclick="alert('미리 보기')">미리 보기</button>
+            <span id="separate">정렬 </span>
+            <input type="radio" name="state" value="text" checked> 게시글 순
+            <input type="radio" name="state" value="text"> 글 등록순
+        </div>    
+        <div id="menu">
+            <span class="menuName">적립금</span>
+            <input type="radio" name="state" value="text" checked> 전체
+            <input type="radio" name="state" value="text"> 지급
+            <input type="radio" name="state" value="text"> 미지급(비회원 제외)
+        </div>    
+    </div>
+
+    <div id="search"> 
+        <input type="submit">
+    </div>
+    </body>
+</html>

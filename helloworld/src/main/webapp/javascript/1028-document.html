@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var n1 = 20;
+            n1 = "20";
+            n1 = true;
+            n1 = null;
+            n1 = {
+                name : 'Hong',
+                age:20,
+            }
+
+            var ary = [n1, 'apple', 20, true];
+            for(var val of ary) {
+                document.write(val + ' ');
+            }
+            document.write(n1);
+            document.write('<p>' + n1['age'] + '</p>');
+            console.log(n1);
+
+            function sum() {
+                var n1 = 10;
+                var n2 = 20;
+                console.log(n1 + n2);
+            }
+            sum();
+
+            {
+                var n1 = 'new';
+                let n2 = 'val';
+            }
+
+            {
+                let n2 = '20';
+                n2 = 20;
+                n2 = true;
+            }
+
+            const n3 = 30;
+
+            function showInfo() {
+                console.log("Hello, world!");
+            }
+            console.log(showInfo);
+            let newFunc = showInfo;
+            console.log(newFunc);
+            newFunc();
+
+            let showAnother = function() {
+                console.log("Nice, World");
+            }
+            console.log(showAnother);
+            showAnother();
+        </script>
+    </body>
+</html>

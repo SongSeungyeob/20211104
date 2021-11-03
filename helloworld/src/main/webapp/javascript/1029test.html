@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html {
+            border: 1px solid black;
+            width: 1250px;
+            height: 500px;
+            margin: 10px;
+        }
+
+        div.headerline {
+            border-bottom: 1px solid darkgray;
+        }
+
+        div.headerline>input[type='button'] {
+            width: 6rem;
+            height: 2rem;
+            margin: 0px 4px 0px;
+            color: black;
+            background-color: white;
+            font-weight: bolder;
+            /* border : 1px solid red; */
+            border: none;
+
+        }
+
+        div.headerline>input[type='button']:hover {
+            color: green;
+            font-weight: bold;
+            border-bottom: 2px solid green;
+        }
+
+        div.smallInfo>span {
+            margin-top: 10px;
+            margin-right: 5px;
+            font-size: 0.7rem;
+            font-weight: bolder;
+        }
+
+        div.smallInfo>span.firstdata {
+            margin-left: 830px;
+        }
+
+        div.smallInfo>span:hover {
+            color: green;
+        }
+
+        nav {
+            clear: both;
+            float: left;
+            width: 15em;
+            height: 23rem;
+            border: 1px solid blue;
+            margin-top: 10px;
+        }
+
+        nav>div.navDivTitle {
+            font-size: 1.3rem;
+            font-weight: bolder;
+            border-bottom: 3px solid rgb(187, 187, 187);
+            padding-bottom: 5px;
+        }
+
+        nav>select {
+
+            width: 15.6em;
+            height: 2.7em;
+            border-bottom: 1px solid darkgray;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 0 3px 0;
+            color: rgb(138, 138, 138);
+            font-weight: bolder;
+        }
+
+        nav>select:hover {
+            background-color: rgb(0, 124, 128);
+            color: white;
+        }
+
+        section {
+            float: left;
+            border: 1px solid red;
+            width: 60.5rem;
+            height: 26.5rem;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+/* 
+        section>div {
+            margin-top: 30px;
+        } */
+
+        .sectionTitle {
+            font-size: 1.5rem;
+            font-weight: bolder;
+            margin-top: 0px;
+            border-bottom: 3px solid darkgray;
+            padding-bottom: 3px;
+        }
+
+        section>div.sectionLeftInfo>div {
+            float: left;
+            font-weight: bolder;
+            margin-top : 30px;
+            margin-bottom: 10px;
+            /* border : 1px solid green; */
+        }
+
+        section>div.sectionRightInfo>div {
+            /* border : 1px solid blue; */
+            float: right;
+            margin-top : 30px;
+            height: 1.5rem;
+        }
+
+        section>div.sectionRightInfo>div>select {
+            width: 8rem;
+            height: 1.7rem;
+            margin-right: 10px;
+            font-weight: bolder;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        section>div.sectionRightInfo>div>input {
+            width: 12rem;
+            height: 1.45rem;
+            margin-right: 10px;
+            font-weight: bolder;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        section>div.contentsTitle {
+            clear: both;
+            /* border : 1px solid blue; */
+            width: 60rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            border-top: 3px solid gray;
+            border-bottom: 1px solid gray;
+        }
+
+        section>div.contentsTitle>div {
+            float: left;
+            color: black;
+            font-weight: bolder;
+            margin-bottom:5px;
+        }
+
+        section>div.contents {
+            border: 1px solid green;
+            margin-left : 5px;
+            height:1.5rem; 
+            margin-bottom :10px;
+            /* height : 2rem; */
+            /* line-height : 2rem;*/
+        }
+
+        /* num, title, poster, postdate, hitup */
+        section>div.contents>div {
+            float: left;
+        }
+
+        section>div.contents>div.num {
+            border : 1px solid red;
+            margin-left: 7px;
+        }
+
+        section>div.contents>div.title {
+            margin-left: 25px;
+        }
+
+        section>div.contents>div.poster {
+            margin-left: 80px;
+        }
+
+        section>div.contents>div.postdate {
+            margin-left: 40px;
+        }
+
+        section>div.contents>div.hitup {
+            margin-left: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headerline">
+        <input type="button" value="감염병">
+        <input type="button" value="건강정보">
+        <input type="button" value="정책정보">
+        <input type="button" value="연구개발">
+        <input type="button" value="알림·자료">
+        <input type="button" value="간행물·통계">
+        <input type="button" value="민원·정보공개">
+        <input type="button" value="기관소개">
+        <input type="button" value="사업별 누리집">
+    </div>
+    <div class="smallInfo">
+        <span class="firstdata">☎ > </span>
+        <span>알림 자료 > </span>
+        <span>공지사항</span>
+    </div>
+    <nav>
+        <div class="navDivTitle">알림·자료</div>
+        <select>
+            <option value="">이달의 건강소식</option>
+        </select>
+        <select>
+            <option value="">보도자료</option>
+        </select>
+        <select>
+            <option value="">포토뉴스</option>
+        </select>
+        <select>
+            <option value="">홍보자료</option>
+        </select>
+        <select>
+            <option value="">공지사항</option>
+        </select>
+        <select>
+            <option value="">공고/공시</option>
+        </select>
+        <select>
+            <option value="">채용공고</option>
+        </select>
+        <select>
+            <option value="">법령·지침·서식</option>
+        </select>
+        </select>
+    </nav>
+    <section>
+        <div class="sectionTitle">공지사항 </div>
+        <div class="sectionLeftInfo">
+            <div>전체2,114건, 현재페이지 </div>
+            <div style="color:orange;">1</div>
+            <div>/212</div>
+        </div>
+        <div class="sectionRightInfo">
+            <div>
+                <input type="text" placeholder="검색어를 입력하세요">
+            </div>
+            <div>
+                <select>
+                    <option value="">제목</option>
+                    <option value="글번호">글번호</option>
+                    <option value="작성자">작성자</option>
+                </select>
+            </div>
+        </div>
+        <div class="contentsTitle">
+            <div style="margin-left : 7px;">번호</div>
+            <div style="margin-left : 250px;">제목</div>
+            <div style="margin-left : 250px;">작성자</div>
+            <div style="margin-left : 100px;">작성일자</div>
+            <div style="margin-left : 80px;">조회수</div>
+        </div>
+        <div class="contents">
+            <div class="num" style="font-weight : bolder;">공지</div>
+            <div class="title" style="font-weight : bolder;">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num" style="font-weight : bolder;">공지</div>
+            <div class="title" style="font-weight : bolder;">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num" style="font-weight : bolder;">공지</div>
+            <div class="title" style="font-weight : bolder;">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num" style="font-weight : bolder;">공지</div>
+            <div class="title">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num" style="font-weight : bolder;">공지</div>
+            <div class="title">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num">공지</div>
+            <div class="title">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+        <div class="contents">
+            <div class="num">공지</div>
+            <div class="title">21211022 국내 예방접종완료자 입국 시 관리면제</div>
+            <div class="poster">질병관리청 검역정책과</div>
+            <div class="postdate">2021-10-22</div>
+            <div class="hitup">20019</div>
+        </div>
+
+    </section>
+</body>
+
+</html>

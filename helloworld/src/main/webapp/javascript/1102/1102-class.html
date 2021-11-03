@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/class.html</title>
+    <!-- <script src="1102-class1.js"></script> -->
+</head>
+
+<body>
+    <div id="add">
+        학번 : <input type="text" id="studentNo"><br>
+        이름 : <input type="text" id="studentName"><br>
+        점수 : <input type="number" id="score"><br>
+        학년 : <input type="number" id="year"><br>
+        <button id='btn'>추가</button><br>
+    </div>
+    <div id="show"></div>
+    <script>
+        function Student(no, name, score, year) {
+            this.no = no;
+            this.name = name;
+            this.score = score;
+            this.year = year;
+
+            this.getNumber = function () {
+                return this.no;
+            }
+            this.getName = function () {
+                return this.name;
+            }
+            this.getScore = function () {
+                return this.score;
+            }
+            this.getYear = function() {
+                return this.year;
+            }
+        }
+        document.getElementById('btn').onclick = function () {
+            let no = document.getElementById('studentNo').value;
+            let name = document.getElementById('studentName').value;
+            let score = document.getElementById('score').value;
+            let year = document.getElementById('year').value;
+            let data = new Student(no, name, score, year);
+            let field = ['학번', '이름', '점수', '학년'];
+
+            let table = new Table();
+            table.makeTable();
+            console.log(table);
+            table.appendToHead(field);
+            table.appendToBody(data);
+            document.getElementById('show').appendChild(table);
+
+            // document.getElementById('show').appendChild(makebyTable(data, field));
+            // document.getElementById('show').appendChild(makebyUL(data, field));
+        }
+
+        class Table {
+            constructor() {
+                this.table = document.createElement('table');
+                this.thead = document.createElement('thead');
+                this.tbody = document.createElement('tbody');
+                this.table.appendChild(this.thead);
+                this.table.appendChild(this.tbody);
+            }
+
+            makeTable() {
+                return this.table;
+            }
+
+            setAttribute() {
+                this.table.setAttribute('border', 2);
+            }
+
+            setWidth(obj) {
+                obj.setAttribute('style','width:80px');
+            }
+
+            makeHead(data) {
+                let tr = document.createElement('tr');
+                data.forEach(function(val) {
+                    let th = document.createElement('th');
+                    th.innerHTML = val;
+                    // this.setWidth(th);
+                    tr.appendChild(th);
+                });
+                console.log(tr);
+                return tr;
+            }
+
+            makeRow(data) {
+                let tr = document.createElement('tr');
+                
+                let td = document.createElement('td');
+                td.innerHTML = data.getNumber();
+                this.setWidth(td);
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = data.getName();
+                this.setWidth(td);
+                tr.appendChild(td);     
+
+                td = document.createElement('td');
+                td.innerHTML = data.getScore();
+                this.setWidth(td);
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = data.getYear();
+                this.setWidth(td);
+                tr.appendChild(td);
+                return tr;
+            }
+
+            appendToHead(field) {
+                this.thead.appendChild(this.makeHead(field));
+            }
+
+            appendToBody(data) {
+                this.tbody.appendChild(this.makeRow(data));
+            }
+        }
+
+        var haveHead = false;
+        document.getElementById('btn').onclick = function () {
+            if(!haveHead) {
+                haveHead = true;
+                let field = ['학번', '이름', '점수', '학년'];
+                let forHeadTable = new Table();
+                forHeadTable.appendToHead(field);
+                forHeadTable.setAttribute();
+                document.getElementById('show').appendChild(forHeadTable.makeTable());
+            }
+
+            let no = document.getElementById('studentNo').value;
+            let name = document.getElementById('studentName').value;
+            let score = document.getElementById('score').value;
+            let year = document.getElementById('year').value;
+            let data = new Student(no, name, score, year);
+           
+            let table = new Table();
+            console.log(table);
+            table.appendToBody(data);
+            table.setAttribute();
+            document.getElementById('show').appendChild(table.makeTable());
+
+            // document.getElementById('show').appendChild(makebyTable(data, field));
+            // document.getElementById('show').appendChild(makebyUL(data, field));
+        }
+
+        // function makebyUL(data, field) {
+        //     let ul = document.createElement('ul');
+        //     field.forEach(function (val, ind) {
+        //         let li = document.createElement('li');
+        //         li.innerHTML = val;
+        //         if(ind == 0) {
+                    
+        //         }
+        //         ul.appendChild(li);
+        //     })
+        //     return ul;
+        // }
+
+        // function makebyTable(data, field) {
+        //     let table = document.createElement('table');
+        //     table.setAttribute("border", '1');
+        //     table.style.textAlign = 'center';
+        //     let thead = document.createElement('thead');
+        //     thead.style.fontWeight = 'bolder';
+        //     let tbody = document.createElement('tbody');
+        //     table.appendChild(thead);
+        //     table.appendChild(tbody);
+
+        //     let tr = document.createElement('tr');
+        //     field.forEach(function (val) {
+        //         let th = document.createElement('th');
+        //         th.innerHTML = val;
+        //         tr.appendChild(th);
+        //     });
+        //     thead.appendChild(tr);
+
+        //     tr = document.createElement('tr');
+        //     data.forEach(function (val) {
+        //         let td = document.createElement('td');
+        //         td.innerHTML = val;
+        //         tr.appendChild(td);
+        //     })
+        //     tbody.appendChild(tr);
+
+        //     return table;
+        // }
+    </script>
+</body>
+
+</html>

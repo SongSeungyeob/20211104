@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/math.html</title>
+        <script>
+            let result;
+            let num = 3.2;
+            result = Math.ceil(num);    // ceil = 무조건 올림.
+            console.log(result);
+            result = Math.floor(num);   // floor = 무조건 내림.
+            console.log(result);
+            result = Math.trunc(num);   // trunc = 소수점 버림.
+            console.log(result);
+            /*
+            floor 와 trunc의 차이.
+            - 음수 값을 넣었을 때 차이점이 발생한다.
+            - trunc는 소수점을 버리는 것이고, floor는 내림을 하는 것이다.
+            - 그래서 -3.2를 trunc 해버리면 소수점을 버려서 -3이 되고, floor를 해버리게 되면 -4가 되버린다.
+            */
+            result = Math.sign(num);    // sign = 양의 값인지 음의 값인지 판단.
+            console.log(result);        // 양수이면 '1'을 음수이면 '-1'을 0이면 0을 return.
+            result = Math.pow(3, 2);    // pow(a , b) = a의 b승을 return.
+            console.log(result);
+            result = Math.sqrt(64);     // root를 씌웠을 때의 값.
+            console.log(result);
+            result = Math.abs(-94);     // 절댓값을 return.
+            console.log(result);
+            result = Math.random();     // 0 ~ 1(0은 포함, 1은 포함X) 사이의 임의의 실수 값을 return.
+            console.log(result);
+            result = Math.random() * 6; // 0 ~ 6(0은 포함, 6은 포함X) 사이의 임의의 실수 값을 return.
+            console.log(result);
+            result = Math.floor(Math.random() * 6); // 0, 1, 2, 3, 4, 5 중 하나의 값을 return. 소수점을 버리므로 정수형이 return된다.
+            console.log(result);
+
+            let randAry = [];
+            for(let i = 0 ; i < 10; i++) {
+                result = Math.floor(Math.random() * 6);
+                console.log(result);
+                randAry.push(result);
+            }
+            console.log(randAry);
+            // let notDupAry = randAry.filter((element, index) => {
+            //     console.log(element, index);
+            //     return randAry.indexOf(element) === index;
+            // });
+            // console.log(notDupAry);
+            let notDupAry = randAry.filter(function (val, ind) {
+                return randAry.indexOf(val) == ind;
+            })
+            console.log(notDupAry);
+
+            randAry.forEach(function (val, ind) {
+                if(notDupAry.indexOf(val) == -1) {
+                    notDupAry.push(val);
+                }
+            })
+            console.log(notDupAry);
+                     
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

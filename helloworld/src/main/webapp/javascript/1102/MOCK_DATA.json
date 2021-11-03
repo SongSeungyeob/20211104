@@ -1,0 +1,81 @@
+[   {
+        "id": 1,
+        "first_name": "Hyatt",
+        "last_name": "Clendening",
+        "email": "hclendening0@facebook.com",
+        "gender": "Bigender",
+        "ip_address": "42.129.213.119"
+    },
+    {
+        "id": 2,
+        "first_name": "Barbe",
+        "last_name": "Sommerly",
+        "email": "bsommerly1@csmonitor.com",
+        "gender": "Polygender",
+        "ip_address": "67.3.108.40"
+    },
+    {
+        "id": 3,
+        "first_name": "Virgie",
+        "last_name": "Peplay",
+        "email": "vpeplay2@facebook.com",
+        "gender": "Genderqueer",
+        "ip_address": "147.221.244.233"
+    },
+    {
+        "id": 4,
+        "first_name": "Danya",
+        "last_name": "Lamar",
+        "email": "dlamar3@google.co.uk",
+        "gender": "Polygender",
+        "ip_address": "212.115.158.68"
+    },
+    {
+        "id": 5,
+        "first_name": "Udall",
+        "last_name": "Abrahamsen",
+        "email": "uabrahamsen4@hatena.ne.jp",
+        "gender": "Genderqueer",
+        "ip_address": "252.236.7.29"
+    },
+    {
+        "id": 6,
+        "first_name": "Edwin",
+        "last_name": "Miere",
+        "email": "emiere5@devhub.com",
+        "gender": "Female",
+        "ip_address": "27.90.80.202"
+    },
+    {
+        "id": 7,
+        "first_name": "Lewes",
+        "last_name": "Sondland",
+        "email": "lsondland6@stumbleupon.com",
+        "gender": "Male",
+        "ip_address": "6.141.7.30"
+    },
+    {
+        "id": 8,
+        "first_name": "Merola",
+        "last_name": "Spybey",
+        "email": "mspybey7@angelfire.com",
+        "gender": "Female",
+        "ip_address": "68.230.94.50"
+    },
+    {
+        "id": 9,
+        "first_name": "Nellie",
+        "last_name": "Izkovitch",
+        "email": "nizkovitch8@bravesites.com",
+        "gender": "Male",
+        "ip_address": "175.251.176.226"
+    },
+    {
+        "id": 10,
+        "first_name": "Tanny",
+        "last_name": "Leedes",
+        "email": "tleedes9@youtube.com",
+        "gender": "Agender",
+        "ip_address": "195.27.197.96"
+    }
+]

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/event2.html</title>
+        <script src="table.js"></script>
+    </head>
+    <body>
+        <script>
+            let btns = document.querySelectorAll('button');
+            console.log(btns);
+            for(let i = 0 ; i < btns.length; i++) {
+                btns[i].onclick = function() {
+                    this.parentNode.parentNode.remove();
+                }
+            }
+
+            let obj = {
+                name : 'Hong',
+                age : 20,
+                showInfo : function() {
+                    return `${this.name} , ${this.age}`;
+                    // 문자열 + number타입이면 number타입이 내부적으로 문자열로 바뀌게 된다.
+                }
+            }
+            console.log(obj.showInfo());
+        </script>
+    </body>
+</html>

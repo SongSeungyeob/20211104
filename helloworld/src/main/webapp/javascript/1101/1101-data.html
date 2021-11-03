@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/1101-data.html</title>
+
+        <style>
+            td {
+                width : 100px;
+                height : 80px;
+                padding : 1px;
+                font-weight : bolder;
+                vertical-align : top;
+            }
+            td:hover {
+                background-color: yellow;
+            }
+            
+            tr > th:nth-child(1) , td:nth-child(1) {
+                color : red;
+            }
+            tr > th:nth-child(7) , td:nth-child(7) {
+                color : blue;
+            }
+            p {
+                font-size : 0.5rem;
+                margin : 0px; 
+                 padding : 0px;
+                color : green;
+            }
+
+            ul {
+                margin-left : 15px;
+                margin-top : 0;
+                margin-bottom : 0;
+                margin-right : 0;
+                padding : 0;
+            }
+            ul>li {
+                font-size : 0.3rem;
+                margin : 0;
+                padding : 0;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="number" name="year" id="year" value="2021">
+        <select name="month" id="month" onchange="showCalendar()">
+            <option value="">월</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <div id="showContent"></div>
+
+         <script>
+             let today = new Date();
+             let year = today.getFullYear();
+             let month = today.getMonth();
+             console.log(year, month);
+
+             function createCalendar(year, month) {
+                // 1일이 무슨 요일인지 알고 있어야 한다.
+                // 그 달에는 총 며칠이 있는지 알고 있어야 한다.
+                let today = new Date();
+                today.setFullYear(year);
+                today.setMonth(month);
+                today.setDate(1);           // 첫 번째 날짜의 요일을 가져오기 위해서...
+
+                let firstDay, lastDate, lastDay;
+                firstDay = today.getDay();
+                lastDay = new Date(year, month + 1, 0); // 다음 달의 첫 째날 보다 하루 전날 이므로 이번 달의 마지막 날을 의미.
+                lastDate = lastDay.getDate();
+                console.log(firstDay, lastDate);        // 요일정보 , 말일정보를 가지고 있음.
+                
+                /* 1일의 위치 -> 마지막 날짜.
+                */
+               let h3 = document.createElement('h3');
+               h3.innerHTML = year + '년 ' + (month + 1) + '월';
+               document.getElementById('showContent').appendChild(h3);
+               let ret = createTable(firstDay, lastDate);
+               document.getElementById('showContent').appendChild(ret);
+               
+             }
+
+             let dayInfo = [ 'Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+             function createTable(firstDay, lastDate) {
+                let table = document.createElement('table');
+                table.setAttribute('border', 2);
+                let thead = document.createElement('thead');
+                let tbody = document.createElement('tbody');
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                
+                table.appendChild(thead);
+                table.appendChild(tbody);
+                thead.appendChild(tr);
+                for(let i = 0 ; i < 7; i++) {
+                    td = document.createElement('th');
+                    td.innerHTML = dayInfo[i];
+                    tr.appendChild(td);
+                }
+
+                tr = document.createElement('tr');
+                tbody.appendChild(tr);
+                let reminCnt = 0;
+                for(let i = 0 ; i < firstDay; i++) {
+                    td = document.createElement('td');
+                    tr.appendChild(td);
+                }
+                for(let i = 1; i <= lastDate; i++) {
+                    td = document.createElement('td');
+                    td.innerHTML = i;
+                    td.onclick = addSchedule;
+                    tr.append(td);
+                    if((i + firstDay) % 7 == 0) {
+                        tr = document.createElement('tr');
+                        tbody.appendChild(tr);
+                    }
+                    reminCnt = i + firstDay;
+                }
+                
+                while(reminCnt++ % 7 != 0) {
+                    td = document.createElement('td');
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+
+                
+                return table;
+             }
+
+             function showCalendar() {
+                let contents = document.querySelector('#showContent');
+                let cnt = contents.children.length;
+                for(let i = 0 ; i < cnt; i++) {
+                    contents.children[0].remove();
+                }
+  
+                let searchYear = document.getElementById('year').value;
+                let searchMonth = document.querySelector('select>option:checked').value;
+                searchYear = parseInt(searchYear);
+                searchMonth = parseInt(searchMonth) - 1;
+                createCalendar(searchYear, searchMonth);
+             }
+
+             function addSchedule() {
+                let result = window.prompt('스케줄을 입력하세요');
+                if(!result) {
+                    return;
+                }
+
+                let ulTag = document.createElement('ul');
+                let liTag = document.createElement('li');
+                let text = document.createTextNode(result);
+                liTag.appendChild(text);
+                ulTag.appendChild(liTag);
+                this.appendChild(ulTag);
+                // let pTag = document.createElement('p');
+                // let text = document.createTextNode(result);
+                // pTag.appendChild(text);
+                // this.appendChild(pTag);
+             }
+
+            //  createCalendar(tYear, tMonth);
+
+            //  let today = new Date();    // 날짜 설정이 없으면 오늘날짜 값.
+            //  console.log(today);
+
+            //  let day = new Date('2021-03-01');
+            //  console.log(day);
+
+            //  day = new Date('2021');
+            //  console.log(day);
+
+            //  day.setFullYear(2020);             // 한국의 표준 시작 시간은 0900시로 설정되어 있음.
+            //  day.setMonth(4);                   // 월은 0부터 시작하기 때문에, 4를 집어넣으면 5월이 인식된다.
+            //  day.setDate(5);
+            //  console.log(day);
+            //  console.log(day.getFullYear());
+
+            //  day.setHours(10);
+            //  console.log(day.getUTCHours());    // UTC 기준으로 값을 가져오겠다.
+
+            //  day.setFullYear(2021);
+            //  day.setMonth(10);
+            //  day.setDate(1);
+            //  day.setHours(10);
+            //  console.log(day.getDay());         // getDay() = 요일정보를 가져오는 method. 0 ~ 6까지 '일'~'금'을 표현.
+
+            //  let day2 = new Date(0);            // Date의 시작 시간은 1970년 기준으로 진행된다.
+            //  console.log(day2);
+
+            //  day2 = new Date(1000*60*60*24*365);    // Date는 ms단위로 표현할 수 있다.
+            //  console.log(day2);
+
+            //  day2 = new Date(1000*60*60*24*365*50);    // Date는 ms단위로 표현할 수 있다.
+            //  console.log(day2);
+         </script>
+    </body>
+</html>

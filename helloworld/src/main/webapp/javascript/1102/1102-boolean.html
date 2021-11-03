@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/boolean.html</title>
+</head>
+
+<body>
+    <script>
+        let val = 0;
+        if (val) {
+            console.log('참값.')
+        } else {
+            console.log('거짓.')
+        }
+
+        val = 3 > 1;
+        if (val) {
+            console.log('참값.')
+        } else {
+            console.log('거짓.')
+        }
+
+        val = '';
+        if (val) {
+            console.log('참값.')
+        } else {
+            console.log('거짓.')
+        }
+
+        val = 3;
+        if (val > 4 ? true : false) {
+            console.log('참값.')
+        } else {
+            console.log('거짓.')
+        }
+
+        val = 0;
+        if (Math.sign(val)) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+
+        val = -1;
+        if (Math.sign(val)) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+
+        val = -100;
+        if (Math.sign(val)) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+
+        val = 100;
+        if (Math.sign(val)) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+
+        val = 10 / 'hello';
+        if (val) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+        // NaN = Not a Number 또한 false이다.
+
+        val = -0;
+        if (val) {
+            console.log('참값.');
+        } else {
+            console.log('거짓.');
+        }
+
+        switch (new Date().getDay()) {
+            case 0:
+                day = "Sunday";
+                break;
+            case 1:
+                day = "Monday";
+                break;
+            case 2:
+                day = "Tuesday";
+                break;
+            case 3:
+                day = "Wednesday";
+                break;
+            case 4:
+                day = "Thursday";
+                break;
+            case 5:
+                day = "Friday";
+                break;
+            case 6:
+                day = "Saturday";
+        }
+        console.log(day);
+
+        const cars = ["BMW", "Volvo", "Saab", "Ford"];
+        list: {
+            text += cars[0] + "<br>";
+            text += cars[1] + "<br>";
+            break list; // 반복문이 아니더라도, 라벨을 붙여서 특정 구역을 빠져나오게 할 수 있다.
+            text += cars[2] + "<br>";
+            text += cars[3] + "<br>";
+        }
+        
+    </script>
+</body>
+
+</html>

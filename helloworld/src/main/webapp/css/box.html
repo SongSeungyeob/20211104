@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css/box.html</title>
+
+        <style>
+            div {
+                box-sizing: content-box;
+                width: 60px;
+                /*  content-box로 하게 되면, content가 가지고 있는 width를 60으로 설정하겠다. 
+                    box-sizing : border-box로 하게 되면, margin + padding 까지 다 합친 border의 width를 60으로 설정하겠다.
+                */
+                border-style: dotted;
+                border-width:3px; 
+                /* border-top-width : 3px;
+                border-bottom-width: 4px; */
+                border-color : red; 
+                /* border-top-color: red;
+                border-left-color:green; */
+                /* border: 2px solid red; */
+                /* 테두리의 두께는 2px, 선의 종류는 실선(solid), 선의 색깔은 red로 하겠다. */
+                padding: 3px;
+                margin: 5px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div>content</div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/1101231233-xml</title>
+
+    </head>
+    <body>
+        <div id="show"></div>   
+    
+        <script>
+	        let xhtp = new XMLHttpRequest();
+	        xhtp.onreadystatechange = function(){
+	           if(xhtp.readyState == 4 && xhtp.status == 200){
+	              console.log(xhtp.responseXML);
+	              let xmlDoc = xhtp.responseXML;
+	              createPage(xmlDoc);
+	           }
+	        }
+	        xhtp.open('get', '../GetMemberServlet');
+	        xhtp.send();
+                   		  
+           
+           function createPage(xmlData) {
+        	   let table, tbody, tr, td;
+        	   table = document.createElement('table');
+        	   table.setAttribute('border', '1');
+        	   tbody = document.createElement('tbody');
+        	   table.appendChild(tbody);
+        	   
+        	   let rows = xmlData.getElementsByTagName('row');
+        	   console.log(rows);
+        	   for(let i = 0 ; i < rows.length; i++) {
+        		   tr = document.createElement('tr');
+        		   for(let j = 0; j < 4; j++) {
+        			   td = document.createElement('td');
+        			   td.innerText = rows[i].children[j].textContent;
+        			   tr.appendChild(td);
+        		   }
+        		   tbody.appendChild(tr);
+        	   }
+        	   document.getElementById('show').appendChild(table);
+           }
+          
+        </script>
+    </body>
+</html>

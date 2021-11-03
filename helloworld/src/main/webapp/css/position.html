@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css/position.html</title>
+
+        <style>
+            body {
+                border: 1px dotted red;
+                height: 300px;
+            }
+            div.wrapper {
+                position: absolute;
+                left : 40px;
+                top: 40px;
+                /* position    : 위치 설정을 위한 속성
+                 * fixed       : 기본 고정값. position의 default값.
+                 * relative    : 원래 있었던 위치를 기준(static일 때를 기준) 으로
+                                 left만큼 왼쪽에서 떨어졌고, top만큼 위에서 떨어지게 된다.
+                 * absolute    : 나를 감싸고 있는 부모 요소를 기준으로 위치 설정.
+                 * fixed       : 바깥에 있는 외부 요소와는 상관없이 전체 가장 큰 페이지를 기준으로
+                               : 위치를 설정.
+                 * sticky      : 스크롤을 내릴 때, 화면에서 사라지지 않게 하는 속성.
+                 */
+                width: 100px;
+                height: 200px;
+                background-color: yellow;
+            }
+
+            div.content {
+                position : sticky;
+                left: 40px;
+                top: 10px;
+                width: 50px;
+                height: 50px;
+                background-color: red;
+            }
+
+            div.row {
+                width: 50px;
+                height: 50px;
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper"> 
+            <div class="content"> </div>
+        </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+    </body>
+</html>

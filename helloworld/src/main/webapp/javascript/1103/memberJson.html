@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/memberJson.html</title>
+	
+		<style>
+			#show {
+				display : inline-block;
+				width : 55vw;
+				padding-right : 2vw;
+				border : 1px solid red;
+			}
+
+			#content {
+				display : inline-block;
+				width : 40vw;
+			}
+			
+			.row {
+				border : 1px solid blue;
+			}
+			.row>.title {
+				display : inline-block;
+				width : 10vw;
+				background-color : aqua;
+			}
+			.row>.content {
+				display:inline-block;
+				width : 25vw;
+				background-color : yellow;
+			}
+		</style>
+    </head>
+    
+    <body>
+        <div id="show"></div>
+        <div id="content">
+        	<div class='row'>
+        		<div class='title'>id</div>
+        		<div class='content'>user1</div>
+       		</div>
+        	<div class='row'>
+        		<div class='title'>name</div>
+        		<div class='content'>홍길동</div>
+       		</div>
+       		<div class='row'>
+        		<div class='title'>addr</div>
+        		<div class='content'>phone</div>
+       		</div>
+        </div>   
+        
+        <script>
+	        let xhtp = new XMLHttpRequest();
+	        xhtp.onreadystatechange = function(){
+	           if(xhtp.readyState == 4 && xhtp.status == 200){
+	              console.log(xhtp.responseText);
+	              let data = JSON.parse(xhtp.responseText);
+	              console.log(data);
+	              createTable(data);
+	           }
+	        }
+	        
+	        xhtp.open('get', '../../GetMemberJsonServ');
+	        xhtp.send();
+	        
+	        function createTable(data) {
+	        	console.log(data);
+	        	
+	           	let mainTitle, table, thead, tbody;
+	           	mainTitle = document.createElement('div');
+	           	mainTitle.innerText = '[ 회 원 리 스 트 ]';
+	           	mainTitle.setAttribute('style','width : 400px; text-align:center; font-weight:bolder; font-size : 30px');
+	           	document.getElementById('show').appendChild(mainTitle);
+	           	
+        	   	table = document.createElement('table');
+	           	thead = document.createElement('thead');
+        	   		   	
+        	   	table.setAttribute('border', '1');
+        	   	table.setAttribute('style', 'text-align : center');
+		       	thead.appendChild(createHeadline(data)); 
+		       	table.appendChild(thead);
+       			table.appendChild(createDatalist(data));
+       			
+       		    console.log(table);
+       		    document.getElementById('show').appendChild(table);
+	        }
+	        
+	        let titles = ['userId','userPw','birthDate','gender','address','phone','userName'];
+	        
+	        function createDatalist(data) {	  
+	        	
+	        	let tbody = document.createElement('tbody');
+	        	data.forEach(function (val) {
+	        		let tr = document.createElement('tr');
+		        	for(let title of titles) {
+		        		let td = document.createElement('td');
+		        		td.textContent = val[title];
+		        		if(title == 'birthDate' && td.textContent != null) {
+		        			td.textContent = td.textContent.substring(0, 10);
+		        		}
+		        		
+		        		if(title == 'userId') {
+		        			td.setAttribute('style','cursor : pointer');
+		        			td.onclick = function() {
+		        				getUserInfo(td.innerText);
+	        				};
+	        				
+	        				// 클릭을 했을 때, 실행되게 만들어야 하는 함수 = getUserInfo(id).
+	        				// td.onclick = getUserInfo(td.innerText);
+	        				// 위와 같이 선언시 프로그램이 실행이 안됨. 계속 클릭하는 것처럼 됨.
+	        				// td.onclick = getUserInfo
+	        				// 위와 같인 선언시 click시 Error 발생.
+	        				// onclick를 실행할 때, 매개변수가 있는 함수를 호출해서 구현을 할 경우에는
+	        				// 반드시 위와 같이 무명함수 형태로 구현해야하나 ?! 
+       						// 매개변수가 없는 함수라면, td.onclick = function_name 이 되지만, 매개변수가 있는 경우에는 ??
+		        		}
+		        		tr.appendChild(td);	
+	        		}
+		        	let td = document.createElement('td');
+	        		let btn = document.createElement('button');
+	        		btn.textContent = '삭제';
+
+	        		td.appendChild(btn);
+	        		tr.appendChild(td);
+					btn.onclick = function() {
+						let id = btn.parentNode.parentNode.children[0].innerText;
+		        		console.log("par = " + btn.parentNode.parentNode);
+						console.log("children = " + btn.parentNode.parentNode.children);
+						console.log("children[0] = " + btn.parentNode.parentNode.children[0]);
+						console.log("innerText = " + id);
+						
+						let parTr = btn.parentNode.parentNode;
+						parTr.remove();
+						deleteData(id);
+					};
+		        	tbody.appendChild(tr);
+	        	});
+	        	return tbody;
+	        }
+	        
+	        /*
+	        function createDatalist2(data) {
+	        	tbody = document.createElement('tbody');
+	        	data.forEach(function(val) {
+	        		console.log(val);
+        			let tr = document.createElement('tr');
+	        		for(let field in val) {
+	        			let td = document.createElement('td');
+	        			if(field == 'birthDate') {
+	        				td.innerText = val[field].substring(0, 10);
+	        			} else {
+	        				td.innerText = val[field];
+	        			}
+	        			
+	        			if(field == 'userId') {
+	        				td.setAttribute('style','cursor : pointer');
+	        				td.onclick = function() {
+	        					getUserInfo(td.innerText);
+	        				};
+	        				//td.onclick = getUserInfo(td.innerText);
+	        				//td.onclick = getUserInfo;
+	        			}
+	        			console.log(val[field]);
+	        			tr.appendChild(td);
+	        		}
+	        		
+	        		let td = document.createElement('td');
+	        		let btn = document.createElement('button');
+					btn.onclick = function() {
+						let id = btn.parentNode.parentNode.children[0].innerText;
+						deleteData(id);
+					};
+	        		btn.innerText = '삭제';
+	        		td.appendChild(btn);
+	        		tr.appendChild(td);
+	        		tbody.appendChild(tr);
+	        	});
+	        	return tbody;
+	        } */
+	        
+        	function createHeadline() {
+	        	let tr = document.createElement('tr');
+	        	for(let title of titles) {
+	        		let th = document.createElement('th');
+	        		th.innerText = title;
+	        		tr.appendChild(th);
+	        	}
+	        	let th = document.createElement('th');
+	        	th.innerText = 'button';
+	        	tr.appendChild(th);
+	        	return tr;	        	
+	        }
+        	
+        	function getUserInfo(id) {
+        		console.log("onclick 작동 ! : " + id);
+        		let xhtp = new XMLHttpRequest();
+        		xhtp.onreadystatechange = function() {
+        			if(xhtp.readyState == 4 && xhtp.status == 200) {
+        				console.log(xhtp);
+        				let data = JSON.parse(xhtp.responseText);
+        				console.log(data);
+        				showDetail(data);
+        			}
+        		}
+        		xhtp.open('get', '../../GetMemberOneJsonServ?id=' + id);
+        		xhtp.send();
+        	}
+        	
+        	function showDetail(row) {
+        		//let before = document.getElementById('content').children;
+        		let contentElm = document.querySelector('#content');
+        		let len = contentElm.children.length;
+        		for(let i = 0 ; i < len; i++) {
+        			contentElm.children[0].remove();
+        		}
+        		for(let title of titles) {
+        			let rowDiv = document.createElement('div');
+        			let titleDiv = document.createElement('div');
+        			let contentDiv = document.createElement('div');
+        			rowDiv.append(titleDiv, contentDiv);
+        			
+        			rowDiv.className = 'row';
+        			
+        			titleDiv.className = 'title';
+        			titleDiv.textContent = title;
+        			
+        			contentDiv.className = 'content';
+        			contentDiv.textContent = row[title];
+        			
+        			document.getElementById('content').appendChild(rowDiv);
+        		}
+        	}
+        	
+        	
+        	function deleteData(id) {
+        		console.log("delete 들어옴 !");
+        		let xhtp = new XMLHttpRequest();
+        		xhtp.onreadystatechange = function() {
+					if(xhtp.readyState == 4 && xhtp.status == 200) {
+						let data = xhtp.responseText;
+						window.alert(data + "을(를) 삭제하였습니다");
+					}        			
+        		}
+        		xhtp.open('get', '../../DeleteMemberJsonServ?id=' + id);
+        		xhtp.send();
+        	}
+        	
+        	
+  
+        	//   for(let i = 0 ; i < rows.length; i++) {
+        	//	   tr = document.createElement('tr');
+        	//	   for(let j = 0; j < 4; j++) {
+        	//		   td = document.createElement('td');
+        	//		   td.innerText = rows[i].children[j].textContent;
+        	//		   tr.appendChild(td);
+        	//	   }
+        	//	   tbody.appendChild(tr);
+     		// }
+        	// document.getElementById('show').appendChild(table);
+	        
+	        
+	      	// post방식은 넘어가는 데이터가 send의 parameter로 넘어가고, Header에서 데이터 형식이 정해진다.
+	        // xhtp.open('post', '../../GetMemberJsonServ');
+	        // xhtp.setRequestHeader("Content-type","application/x-www-form-urlencoded");	
+	        // xhtp.send("id=user4&name=Hong&addr=daegu171"); // & = 여러개가 들어갈 때 구분하기 위함.
+
+        </script>
+    </body>
+</html>

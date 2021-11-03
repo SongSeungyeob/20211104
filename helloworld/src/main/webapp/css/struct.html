@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            * {
+                font-size : 15px;
+            }
+            ul>li:nth-child(2n) {
+                color:red;
+            }
+
+            div li:first-of-type {
+                color:blue;
+            }
+
+            div li:nth-of-type(1) {
+                background-color: yellow;
+            }
+
+            ol>li:not(:nth-child(3)) {
+                background-color: greenyellow;
+            }
+
+            ul>li::first-letter {
+                font-size: 2em;
+            }
+
+            ul::first-line {
+                font-size:2em;
+            }
+
+            ol>li::selection {
+                /* ::selection = 문자를 지정할 때, 변하는 색깔. 즉, 마우스로 드래그 했을 때 나오는 색깔이다.*/
+                background-color: aqua;
+                color : blue;
+            }
+
+            ol>li::after {
+                content: " selected!!!"; 
+                /* content : 콘텐츠를 추가하겠다. */
+            }
+
+            ol>li:nth-child(2n)::before {
+                content: " - ";
+            }
+
+            ol>li:hover {
+                /* hover = 마우스가 올라갔을 때 ,바뀌는 색깔. */
+                background-color: burlywood;
+                color: red;
+            }
+
+            ol>li:nth-child(2) + li:nth-child(4) {
+                /* 인접 형제 선택자.  
+                   A + B = A바로뒤에 오는 B에 Style을 적용하겠다.
+                   반드시 B가 A의 바로 뒤에 와야 한다.
+                */
+        
+                background-color: chocolate;
+            }
+
+            ol>li:nth-child(2), ol>li:nth-child(3) {
+                background-color: chocolate;
+            } 
+
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <ol>
+                <h3>another</h3>
+                <li>Espresso</li>
+                <li>Americano</li>
+                <li>Caffe Latte</li>
+                <li>Caffe Mocha</li>
+                <li>Caramel Latte</li>
+                <li>Capuccino</li>
+            </ol>    
+        </div>
+
+        <ul>
+            <li>Espresso</li>
+            <li>Americano</li>
+            <li>Caffe Latte</li>
+            <li>Caffe Mocha</li>
+            <li>Caramel Latte</li>
+            <li>Capuccino</li>
+        </ul>
+    </body>
+</html>

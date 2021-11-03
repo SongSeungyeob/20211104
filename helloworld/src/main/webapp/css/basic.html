@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css/basic.html</title>
+        <style>
+
+            span#first { /* #first .first 이런 놈들 = 선택자. 
+                        * 페이지에 있는 속성 또는 이름으로 지정할 떄 사용. 
+                        * 앞에 '#'이 붙으면 'id' 속성을,
+                        * 앞에 '.'이 붙으면 'class' 속성을 의미.
+                        * 만약, span태그에서 id가 first인 놈만 지정하고 싶다면 ?
+                        * span#first 이런식으로 ! */
+                border: 1px dotted red;  
+                width: 100px;
+                height: 30px;
+                display: inline;
+                display: inline-block;
+            }
+            /* div {
+                border: 1px dotted red;  
+                width: 100px;
+                height: 30px;
+                display: inline;
+                display: inline-block;
+            } */
+            span {
+                border: 1px solid blue;
+                width: 100px;
+                height: 40px;
+                display:block;
+                /* padding-left: 3px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-right: 3px;
+                margin-left: 5px;
+                margin-top: 3px;
+                margin-bottom: 3px; */
+                padding: 3px 2px 3px 2px; /* top right bottom left 순서 */
+                margin: 3px 2px 1px;
+                
+            /* width 속성을 가지려면 block 형식 이여야 한다.
+               기본 설정값으로는 span은 block형식이 아니기에 width:100px가 먹히지 않는다. */
+            }
+        </style>
+    </head>
+
+    <body>
+        
+        <div id='first'>div1</div>
+        <div class='first'>div2</div>
+        <div>div3</div>
+
+        <span id='first'>span1</span>
+        <span class='first'>span2</span>
+        <span>span3</span>
+    </body>
+</html>

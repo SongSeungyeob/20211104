@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css/unit.html</title>
+
+        <style>
+            * {
+                font-size: 10px;
+                box-sizing: border-box; 
+            }
+            body {
+                font-size : 14px;
+            }
+
+            div {
+                font-size: 1.5em;
+                border: 1px solid red;
+                width:50vw;
+                /* vw : viewport width
+                 * viewport 영역, 즉, 보여지는 영역의 너비를 X%로 보여주겠다.
+                 */
+                 height: 20vh;
+                 /* vh : viewport height
+                  * 보여지는 영역의 높이를 X%로 보여주겠다.
+                  */
+            }
+
+            div>div {
+                /* font-size: 1.5em; */
+                /* Xem = 부모 요소의 크기의 영향을 받아 크기가 변하는 것이다.
+                 * 부모 요소의 크기를 기준으로 X배 커진다.
+                 */
+                font-size: 1.5rem;
+                /* Xrem = root 부모 요소를 기준으로 X배 커지는 것이다.
+                 * 이 경우에는, *의 font-size인 10을 기준으로 1.5배가 되는 것이다.
+                 */
+            }
+
+            div>div>div {
+                font-size:1.5rem;
+                /* background-color: rgb(214,150,31); */
+                /* background-color: rgba(214,150,31,0.5); */
+                /* rgb = red, green, blue 비율로 색깔 표현
+                 * rgba = red, green, blue + a = 불투명도   
+                 * a = 1일 때, 그 색깔 그대로, 값이 더 낮아질수록 연해진다.
+                 */
+
+                /* background-color: #aaaa00; */
+                /* 16진수 방식으로도 색깔 표현 가능.*/
+                background-color: hsl(100, 20%, 30%);
+            }
+
+            div#cnt {
+                border-radius: 10px 20px 30px;
+                box-shadow: 10px 20px 30px 30px green ;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        body font
+        <p>basic font</p>
+        <div id='cnt' style='font-size : 21px;'>cnt</div>
+        <div>content
+            <div>content2
+                <div>content3</div>
+            </div>
+        </div>
+    </body>
+</html>

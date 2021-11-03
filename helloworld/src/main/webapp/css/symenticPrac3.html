@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>practice3</title>
+        
+        <style>
+            span#main {
+                font-weight:1000;
+                margin-left:10px;
+            }
+            span#mainNum {
+                font-weight:1000;
+                color:blue;
+            }
+            select#headerSelect {
+                border: 1px solid darkgray;
+                height : 4vh;
+                float : left;
+                color : darkgrey;
+                font-size:10px;
+                margin : 10px 10px 0px;
+            }
+
+            input {
+                float : left;
+                margin-top : 10px;
+                height : 3.4vh;
+                border: 1px solid darkgray;
+            }
+
+            button {
+                border : 1px solid darkgray;
+                color : black;
+                font-weight: 700;
+                margin-top:10px;
+                margin-left: 4px;
+                height : 4.1vh;
+                font-size : 1px;
+            }
+            span#result {
+                /* border:1px solid blue; */
+                font-weight:700;
+                color:darkgrey;
+                font-size:0.1px;
+            }
+            span#resultNum {
+                /* border:1px solid blue; */
+                font-size:0.1px;
+                font-weight : 1000;
+            }
+
+            div#selectionDiv {
+                font-weight:700;
+                font-size:0.5em;
+                /* border : 1px solid red; */
+                float : right;
+                margin-top:10px;
+                margin-right:10px;
+                font-size:small;
+            }
+
+            div#colordiv {
+                font-weight:700;
+                /* border : 1px solid red; */
+                float : right;
+                margin-top:10px;
+                margin-right:10px;
+                font-size:small;
+                text-align: center;
+                width:70px;
+                border: 1px solid darkgrey;
+                background-color: darkgrey;
+                color : white;
+            }
+
+            div#title {
+                background-color: #e0e0e0;
+                width : 97.5%;
+                height : 5vh;
+                margin-left : 10px;
+                font-size:1px;
+                font-weight : 700;
+                line-height : 5vh;
+                float:left;
+                border-top : 1px solid black;
+            }
+
+            div#content {
+                       
+                width : 97.5%;
+                height : 5vh;
+                margin-left : 15px;
+                font-size:1px;
+                font-weight : 800;
+                line-height : 5vh;
+                float:left;
+                border-bottom : 1px solid darkgrey;
+                color:#707070;
+            }
+
+            p {
+                margin-left:10px;
+                margin-right : 5px;
+                float : left;
+            }
+
+            select#circleDropDown {
+                margin-top:7.5px;
+                color:darkgrey;
+                background-color:whitesmoke;
+                border-radius: 10px;
+                width:13px;
+                height :13px;
+                
+                float : left;
+            }
+
+            p#제목 {
+                margin-left : 200px;
+                margin-right : 200px;
+            }
+
+            p#문의자 {
+                margin-right : 70px;
+                
+            }
+
+            p#문의종류 {
+                margin-left : 30px;
+            }
+            
+            p#답변상태 {
+                margin-left : 40px;
+                color:blue;
+            }
+
+            p#글제목 {
+                margin-left : 50px;
+                margin-right : 110px;
+                width:33%;
+            }
+
+            p#문의자명 {
+                width:10%;
+                margin-left : 0px;
+                margin-right : 20px;
+            }
+
+            div#bottomTool {
+                width:30em;
+                height: 100%;
+                margin-top : 1%;
+                margin-left : 40%;
+                float:left;
+            }
+
+            div#bottomTool>p#arrow{
+                color: darkgrey;
+            }
+            div#bottomTool>p#page {
+                float:left;
+                font-weight: 1000;
+                color: deepskyblue;
+            }
+
+            select#bottom {
+                border: 1px solid darkgray;
+                width : 10%;
+                height : 4vh;
+                float : right;
+                color : darkgrey;
+                font-size:10px;
+                margin : 3%;
+            }
+
+            p#bottomPage {
+                float : right;
+                font-weight: 700;
+                color:dimgrey;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <span id="main">상품 문의하기</span>
+            <span id="mainNum">4</span>
+            <br>
+
+            <select name="" id="headerSelect">
+                <option value="">제목</option>
+                <option value="작성자">작성자</option>
+                <option value="글번호">글번호</option>
+                <input type="text">
+                <button value="검색"> 검색</button>
+                <span id="result">총 검색 결과 </span>
+                <span id="resultNum">4건</span>
+                <div id="selectionDiv">전체 문의보기</div>
+                <div id="selectionDiv">내 문의보기 | </div>
+                <div id="colordiv">문의하기</div>
+            </select>
+        </header>
+        <br>
+        
+        <div id="title">
+            <p>번호 | </p>
+            <p>문의종류</p>
+            <select name="" id="circleDropDown">
+                <option value="답변완료">답변완료</option>
+                <option value="답변대기">답변대기</option>
+            </select>
+
+            <p>답변상태</p>
+            <select name="" id="circleDropDown">
+                <option value="답변완료">답변완료</option>
+                <option value="답변대기">답변대기</option>
+            </select>
+            <p id="제목">제목</p>
+            <p id="문의자">문의자</p>
+            <p>등록일</p>
+        </div>
+
+        <div id="content">
+            <p>4</p>
+            <p id="문의종류">배송</p>
+            <p id="답변상태">답변완료</p>
+            <p id="글제목"> 배송</p>
+            <p id="문의자명">b45******</p>
+           <p>2021.10.15</p>
+        </div>
+        <div id="content">
+            <p>3</p>
+            <p id="문의종류">기타</p>
+            <p id="답변상태">답변완료</p>
+            <p id="글제목"> 기타 문의입니다.🔒 </p>
+            <p id="문의자명">bul*****</p>
+           <p>2021.10.07</p>
+        </div>
+        <div id="content">
+            <p>2</p>
+            <p id="문의종류">상품</p>
+            <p id="답변상태">답변완료</p>
+            <p id="글제목"> 상품 문의입니다.🔒</p>
+            <p id="문의자명">hrh****</p>
+           <p>2021.10.06</p>
+        </div>
+        <div id="content">
+            <p>1</p>
+            <p id="문의종류">상품</p>
+            <p id="답변상태">답변완료</p>
+            <p id="글제목"> 배송</p>
+            <p id="문의자명">dc3***</p>
+           <p>2021.08.29</p>
+        </div>
+        
+        <div id="bottomTool">
+            <p id="arrow"><<  < </p>
+            <p id="page">   ① </p>
+            <p id="arrow">>  >> </p>
+
+            <p id="bottomPage">1 Page</p>
+            <select name="" id="bottom">
+                <option value="">1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+    </body>
+</html>

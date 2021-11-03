@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>javascript/cal.html</title>
+
+        <style>
+            
+            th,td {
+                width: 40px;
+            }
+            td {
+                text-align : right;
+            }
+            tr>th:nth-child(1), tr>td:nth-child(1) {
+                background-color: red;
+                color : white;
+            }
+            tr>th:nth-child(7), tr>td:nth-child(7) {
+                background: blue;
+                color : white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script>
+            function getLastDate(month) {
+                switch(month) {
+                    case 1 :
+                    case 3 :
+                    case 5 : 
+                    case 7 :
+                    case 8 :
+                    case 10 :
+                    case 12 :
+                        return 31;
+                    case 4 :
+                    case 6 :
+                    case 9 :
+                    case 11 :
+                        return 30;
+                    case 2: 
+                        return 28;
+                }
+            }
+
+            let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+            let year = 2021;
+            let month = 10;
+            let today = new Date(year +'-' + month + '-01');
+            let firstday = today.getDay();
+            let lastdate = getLastDate(month);
+            //getDay() : 일요일-0, 월요일-1, 화요일-2...
+            console.log(firstday);
+
+            let str = '<h1>' + year + '년 ' + month +'월</h1>';
+            str += '<table border="1">';
+            str += '<thead><tr>';
+            for(let day of days) {
+                str += '<th>' + day + '</th>';
+            }
+            str +='</tr></thead>';
+            str += '<tbody><tr>';
+            for(let i = 0 ; i < firstday; i++) {
+                str += '<td></td>';
+            }
+
+            for(let i = 1; i <= lastdate; i++) {
+                str += '<td>' + i + '</td>';
+                if((i + firstday) % 7 == 0) {
+                    str += '</tr><tr>';
+                }
+            }
+            str += '</tr></tbody></table>';
+            document.write(str);
+
+            let tds = document.querySelectorAll('td');
+            for(let i = 0 ; i < tds.length; i++) {
+                tds[i].onmouseover = function() {
+                    this.style.backgroundColor = 'yellow';
+                }
+                tds[i].onmouseout = function() {
+                    this.style.backgroundColor = null;
+                }
+            }
+        </script>                
+    </body>
+</html>
